@@ -2,13 +2,18 @@
 <p class="text-center">
   <a class="link wipe" [routerLink]="['/']">VOLVER</a>
 </p>
-<div *ngFor="let course of courses | async">
-  <div class="card" style="width: 100%; margin-top: 10px">
-    <div class="card-body">
-      <h5 class="card-title">{{course.title}}</h5>
-      <h6 class="card-subtitle mb-2 text-muted">by {{course.author}}</h6>
-      <p class="card-text">{{course.description}}</p>
-      <a href="{{course.url}}" class="card-link">Go to course ...</a>
-    </div>
+<p class="text-center">Enviando a: </p>
+<code>
+  https://spotify-graphql-server.herokuapp.com/graphql
+</code>
+<h3 class="text-center">RESPUESTA </h3>
+  <pre>
+  {{ artists | json }}
+  </pre>
+
+<div *ngFor="let artist of artists.queryArtists">
+  <div>
+    <h5>{{artist.name}}</h5>
+    <p><img src="{{artist.image}}"></p>
   </div>
 </div>

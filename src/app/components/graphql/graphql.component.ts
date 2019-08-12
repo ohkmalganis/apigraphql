@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Course, Query } from '../../config';
 import gql from 'graphql-tag';
+import { GraphqlService } from './graphql.service';
 
 @Component({
   selector: 'app-graphql',
@@ -12,35 +12,17 @@ import gql from 'graphql-tag';
 })
 export class GraphqlComponent implements OnInit {
 
-  courses: Observable<Course[]>;
+  public artists;
 
   constructor(
-    private apollo: Apollo
+    private apollo: Apollo,
+    private service: GraphqlService
   ) { }
 
   ngOnInit() {
-    this.theFunction();
-  }
-
-  theFunction()
-  {
-    this.courses = this.apollo.watchQuery<Query>({
-      query: gql`
-        query allCourses {
-          allCourses {
-            id
-            title
-            author
-            description
-            topic
-            url
-          }
-        }
-      `
+    this.service.getOwners().then((res) => {
+      console.log(res);
+      this.artists = res;
     })
-      .valueChanges
-      .pipe(
-        map(result => result.data.allCourses)
-      );
   }
 }

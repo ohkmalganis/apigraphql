@@ -40,4 +40,18 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  // constructor(apollo: Apollo, httpLink: HttpLink) {
+  //   apollo.create({
+  //     link: httpLink.create({
+  //       uri: 'https://launchpad.graphql.com/vm8mjvrnv3',
+  //       withCredentials: true,
+  //       method: 'POST',
+  //       headers: {
+  //         origin: "http://localhost:4200"
+  //       }
+  //     }),
+  //     cache: new InMemoryCache()
+  //   });
+  // }
+}
