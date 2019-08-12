@@ -1,0 +1,26 @@
+<h2 class="text-center">CONSUMO DE API (API - REST)</h2>
+<p class="text-center">
+  <a class="link wipe" [routerLink]="['/']">VOLVER</a>
+</p>
+<p class="text-center">
+  <a class="link wipe" [routerLink]="['/apirest']">GET</a>
+  <a class="link wipe" [routerLink]="['/apirest/post']">POST</a>
+  <a class="link wipe" [routerLink]="['/apirest/put']">PUT</a>
+  <a class="link wipe" [routerLink]="['/apirest/patch']">PATCH</a>
+  <a class="link underline">DELETE</a> </p>
+<div *ngIf="!info">
+  Esperando informacion...
+</div>
+<p *ngIf="info">
+  Informacion recibida!
+</p>
+<a class="link opacity" (click)="deleteData()">Eliminar</a>
+<p>Lo que estamos enviando:</p>
+<code>
+  ID: {{ id }}
+</code>
+<p>Lo que recibimos</p>
+
+<code>
+  {{ data | json }}
+</code>
